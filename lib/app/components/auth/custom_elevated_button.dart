@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+
 import 'package:greengrocer_mobile/app/core/ui/extension/size_screen_extension.dart';
 
 class CustomElevatedButton extends StatelessWidget {
 
 final String text;
+final Function()? onPressed;
 
-  const CustomElevatedButton({super.key, required this.text});
+  const CustomElevatedButton({
+    Key? key,
+    this.text = '',
+    this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,7 @@ final String text;
             borderRadius: BorderRadius.circular(18),
           ),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
           text,
           style: const TextStyle(fontSize: 18),

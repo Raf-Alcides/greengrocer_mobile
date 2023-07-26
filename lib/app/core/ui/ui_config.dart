@@ -22,5 +22,11 @@ class UiConfig {
           prefixIconColor: Color(0xff8bc34a),
           suffixIconColor: Color(0xff8bc34a),
         ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor:  const Color(0xff8bc34a),
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white.withAlpha(100)
+        )
       );
 }
