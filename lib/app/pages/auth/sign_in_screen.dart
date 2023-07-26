@@ -1,8 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:greengrocer_mobile/app/auth/sign_up_screen.dart';
-import 'package:greengrocer_mobile/app/base/base_screen.dart';
-import 'package:greengrocer_mobile/app/components/auth/custom_elevated_button.dart';
+import 'package:greengrocer_mobile/app/pages/auth/sign_up_screen.dart';
+import 'package:greengrocer_mobile/app/pages/base/base_screen.dart';
+import 'package:greengrocer_mobile/app/pages/components/auth/custom_elevated_button.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/size_screen_extension.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/theme_extension.dart';
 
@@ -60,6 +60,7 @@ class SignInScreen extends StatelessWidget {
                           FadeAnimatedText('Verduras'),
                           FadeAnimatedText('Legumes'),
                           FadeAnimatedText('Hotalizas'),
+                          FadeAnimatedText('Temperos'),
                         ],
                       ),
                     ),

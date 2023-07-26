@@ -7,6 +7,7 @@ class UiConfig {
 
   static ThemeData get theme => ThemeData(
         primaryColor: const Color(0xff8bc34a),
+        scaffoldBackgroundColor: Colors.white.withAlpha(190),
         elevatedButtonTheme: const ElevatedButtonThemeData(
           style: ButtonStyle(
             backgroundColor: MaterialStatePropertyAll(
@@ -27,6 +28,11 @@ class UiConfig {
           backgroundColor:  const Color(0xff8bc34a),
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.white.withAlpha(100)
+        ),
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          centerTitle: true
         )
       );
 }
