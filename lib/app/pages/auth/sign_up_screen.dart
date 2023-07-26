@@ -72,7 +72,7 @@ class SignUpScreen extends StatelessWidget {
                             hintText: 'Senha',
                             icon: Icons.lock_outline,
                             isSecret: true),
-                        const CustomElevatedButton(text: 'Cadastrar'),
+                         CustomElevatedButton(text: 'Cadastrar' , onPressed: () {}),
                       ],
                     ),
                   )

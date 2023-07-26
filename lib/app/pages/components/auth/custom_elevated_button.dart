@@ -9,8 +9,8 @@ final Function()? onPressed;
 
   const CustomElevatedButton({
     Key? key,
-    this.text = '',
-    this.onPressed,
+    required this.text,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -26,7 +26,7 @@ final Function()? onPressed;
         onPressed: onPressed,
         child: Text(
           text,
-          style: const TextStyle(fontSize: 18),
+          style: const TextStyle(fontSize: 18, color: Colors.white),
         ),
       ),
     );
