@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/size_screen_extension.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  const CustomElevatedButton({super.key});
+
+final String text;
+
+  const CustomElevatedButton({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +18,9 @@ class CustomElevatedButton extends StatelessWidget {
           ),
         ),
         onPressed: () {},
-        child: const Text(
-          'Entrar',
-          style: TextStyle(fontSize: 18),
+        child: Text(
+          text,
+          style: const TextStyle(fontSize: 18),
         ),
       ),
     );

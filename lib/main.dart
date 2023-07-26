@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:greengrocer_mobile/app/auth/sing_in_screen.dart';
+import 'package:greengrocer_mobile/app/auth/sign_in_screen.dart';
 import 'package:greengrocer_mobile/app/core/ui/ui_config.dart';
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         title: UiConfig.title,
         theme: UiConfig.theme,
         debugShowCheckedModeBanner:  false,
-        home: const SingInScreen()
+        home: const SignInScreen()
       ),
     );
   }

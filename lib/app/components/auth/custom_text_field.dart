@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextField extends StatefulWidget {
   final IconData icon;
   final String hintText;
   final bool isSecret;
-  
+  final List<TextInputFormatter>? inputFormatters;
 
-   const CustomTextField({
+  const CustomTextField({
     Key? key,
     required this.icon,
     required this.hintText,
     this.isSecret = false,
+    this.inputFormatters,
   }) : super(key: key);
 
   @override
@@ -18,12 +20,10 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-
   bool isObscure = false;
 
   @override
   void initState() {
-    
     super.initState();
     isObscure = widget.isSecret;
   }
@@ -33,6 +33,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: TextFormField(
+        inputFormatters: widget.inputFormatters,
         obscureText: isObscure,
         decoration: InputDecoration(
           prefixIcon: Icon(widget.icon),
@@ -43,7 +44,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       isObscure = !isObscure;
                     });
                   },
-                  icon:  Icon(isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined ),
+                  icon: Icon(isObscure
+                      ? Icons.visibility_outlined
+                      : Icons.visibility_off_outlined),
                 )
               : null,
           hintText: widget.hintText,

@@ -1,22 +1,21 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:greengrocer_mobile/app/auth/sign_up_screen.dart';
 import 'package:greengrocer_mobile/app/components/auth/custom_elevated_button.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/size_screen_extension.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/theme_extension.dart';
 
 import '../components/auth/custom_text_field.dart';
 
-class SingInScreen extends StatelessWidget {
-  const SingInScreen({super.key});
-
+class SignInScreen extends StatelessWidget {
+  const SignInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-    backgroundColor: context.primaryColor,
+      backgroundColor: context.primaryColor,
       body: SingleChildScrollView(
         child: SizedBox(
           height: size.height,
@@ -26,7 +25,7 @@ class SingInScreen extends StatelessWidget {
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                   Text.rich(
+                  Text.rich(
                     TextSpan(
                       style: const TextStyle(
                         fontSize: 40,
@@ -51,9 +50,7 @@ class SingInScreen extends StatelessWidget {
                   SizedBox(
                     height: 30.h,
                     child: DefaultTextStyle(
-                      style: const TextStyle(
-                        fontSize: 25
-                      ),
+                      style: const TextStyle(fontSize: 25),
                       child: AnimatedTextKit(
                         repeatForever: true,
                         pause: Duration.zero,
@@ -87,7 +84,7 @@ class SingInScreen extends StatelessWidget {
                       icon: Icons.lock_outline,
                       isSecret: true,
                     ),
-                    const CustomElevatedButton(),
+                    const CustomElevatedButton( text: 'Entrar'),
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
@@ -110,7 +107,8 @@ class SingInScreen extends StatelessWidget {
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsets.only(bottom: 18, left: 15, right: 15),
+                          padding:
+                              EdgeInsets.only(bottom: 18, left: 15, right: 15),
                           child: Text(
                             'Ou',
                             style: TextStyle(fontSize: 16),
@@ -128,18 +126,20 @@ class SingInScreen extends StatelessWidget {
                       height: 50.h,
                       child: OutlinedButton(
                         style: OutlinedButton.styleFrom(
-                          side:  BorderSide(width: 2, color: context.primaryColor),
+                          side:
+                              BorderSide(width: 2, color: context.primaryColor),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadiusDirectional.circular(18),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (_) =>  SignUpScreen())
+                          );
+                        },
                         child: const Text(
                           'Cadastrar',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black
-                          ),
+                          style: TextStyle(fontSize: 18, color: Colors.black),
                         ),
                       ),
                     ),
