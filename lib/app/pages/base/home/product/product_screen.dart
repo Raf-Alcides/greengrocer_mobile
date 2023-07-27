@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/theme_extension.dart';
 import 'package:greengrocer_mobile/app/core/ui/services/utils_services.dart';
 import 'package:greengrocer_mobile/app/models/item_model.dart';
-import 'package:greengrocer_mobile/app/pages/components/auth/custom_elevated_button.dart';
-import '../../components/widgets/custom_quantity.dart';
+import 'package:greengrocer_mobile/app/components/widgets/custom_elevated_button.dart';
+import '../../../../components/widgets/custom_quantity.dart';
 
 class ProductScreen extends StatefulWidget {
   final ItemModel item;

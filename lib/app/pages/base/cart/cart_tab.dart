@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/theme_extension.dart';
 import 'package:greengrocer_mobile/app/core/ui/services/utils_services.dart';
 import 'package:greengrocer_mobile/app/models/cart_item_model.dart';
-import 'package:greengrocer_mobile/app/pages/components/auth/custom_elevated_button.dart';
-import '../../core/app_data.dart' as app_data;
-import '../components/cart/cart_tile.dart';
+import 'package:greengrocer_mobile/app/components/widgets/custom_elevated_button.dart';
+import '../../../core/app_data.dart' as app_data;
+import '../../../components/cart/cart_tile.dart';
 
 class CartTab extends StatefulWidget {
   const CartTab({super.key});

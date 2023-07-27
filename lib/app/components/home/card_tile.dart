@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/theme_extension.dart';
 import 'package:greengrocer_mobile/app/core/ui/services/utils_services.dart';
 import 'package:greengrocer_mobile/app/models/item_model.dart';
-import 'package:greengrocer_mobile/app/pages/home/product/product_screen.dart';
+import 'package:greengrocer_mobile/app/pages/base/home/product/product_screen.dart';
 
 class CardTile extends StatelessWidget {
   final ItemModel item;

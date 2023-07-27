@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/size_screen_extension.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/theme_extension.dart';
 
-import '../../core/app_data.dart' as app_data;
-import '../components/home/card_tile.dart';
-import '../components/home/category_tile.dart';
+import '../../../core/app_data.dart' as app_data;
+import '../../../components/home/card_tile.dart';
+import '../../../components/home/category_tile.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
