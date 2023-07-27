@@ -1,11 +1,14 @@
 import 'package:greengrocer_mobile/app/models/item_model.dart';
 
+import '../models/cart_item_model.dart';
+
 final ItemModel apple = ItemModel(
   itemName: 'Maça',
   imgUrl: 'assets/images/apple.png',
   unit: 'kilo',
   price: 4.43,
-  description: 'A Maçã Fuji Possui fibras solúveis que ajudam a reduzir o colesterol sangüíneo.  A Maçã Gala é fonte de ferro, mineral essencial para a formação dos glóbulos vermelhos. A Maçã Golden possui enzimas que melhoram a digestão. Vendida por quilo (KG) e unidade (UN). Variações da Maçã: Golden, Red Delicious, Nacional Fuji e Nacional Gala.',
+  description:
+      'A Maçã Fuji Possui fibras solúveis que ajudam a reduzir o colesterol sangüíneo.  A Maçã Gala é fonte de ferro, mineral essencial para a formação dos glóbulos vermelhos. A Maçã Golden possui enzimas que melhoram a digestão. Vendida por quilo (KG) e unidade (UN). Variações da Maçã: Golden, Red Delicious, Nacional Fuji e Nacional Gala.',
 );
 
 final ItemModel grape = ItemModel(
@@ -58,9 +61,15 @@ List<ItemModel> items = [
 ];
 
 List<String> categories = [
-    'Frutas',
-    'Verduras',
-    'Legumes',
-    'Hortalizas',
-    'Temperos',
-  ];
+  'Frutas',
+  'Verduras',
+  'Legumes',
+  'Hortalizas',
+  'Temperos',
+];
+
+List<CartItemModel> cartItem = [
+  CartItemModel(item: apple, quantity: 3),
+  CartItemModel(item: mamao, quantity: 2),
+  CartItemModel(item: mango, quantity: 1),
+];

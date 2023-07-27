@@ -7,12 +7,13 @@ class CustomQuantity extends StatelessWidget {
   final int count;
   final String medida;
   final Function(int quatity) result;
+  final bool isRemove;
 
   const CustomQuantity({
     super.key,
     required this.count,
     required this.medida,
-    required this.result,
+    required this.result, this.isRemove = false,
   });
 
   @override
@@ -27,15 +28,16 @@ class CustomQuantity extends StatelessWidget {
         ],
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           WidgetQuatity(
-            icon: Icons.remove,
+            icon: !isRemove || count > 1 ? Icons.remove : Icons.delete_forever,
             ontap: () {
-              if(count == 1) return;
+              if(count == 1 && !isRemove)  return;
               int resultCount = count - 1;
               result(resultCount);
             },
-            color: Colors.grey,
+            color: !isRemove || count > 1 ? Colors.grey : Colors.red,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 7),
