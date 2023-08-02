@@ -1,8 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/theme_extension.dart';
 import 'package:greengrocer_mobile/app/core/ui/services/utils_services.dart';
 import 'package:greengrocer_mobile/app/models/cart_item_model.dart';
 import 'package:greengrocer_mobile/app/components/widgets/custom_elevated_button.dart';
+import '../../../components/widgets/payment_dialog.dart';
 import '../../../core/app_data.dart' as app_data;
 import '../../../components/cart/cart_tile.dart';
 
@@ -71,8 +74,17 @@ class _CartTabState extends State<CartTab> {
                       text: 'Concluir Pedido',
                       onPressed: () async {
                         bool? result = await showOrderConfimation();
-                        // ignore: avoid_print
-                        print(result);
+
+                        if (result ?? false) {
+                          showDialog(
+                            context: context,
+                            builder: (_) {
+                              return PaymentDialog(
+                                order: app_data.orders.first,
+                              );
+                            },
+                          );
+                        }
                       })
                 ]),
           ),
@@ -86,9 +98,8 @@ class _CartTabState extends State<CartTab> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20)
-            ),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             title: const Text('Confirmação'),
             content: const Text('Deseja realmente concluir o Pedido?'),
             actions: [
@@ -98,14 +109,15 @@ class _CartTabState extends State<CartTab> {
                 },
                 child: const Text('Não'),
               ),
-              ElevatedButton(onPressed: () {
+              ElevatedButton(
+                onPressed: () {
                   Navigator.of(context).pop(true);
-
-              }, style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)
-                )
-              ), child: const Text('Sim'),)
+                },
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20))),
+                child: const Text('Sim'),
+              )
             ],
           );
         });
