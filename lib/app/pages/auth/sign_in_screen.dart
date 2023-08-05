@@ -1,11 +1,10 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:greengrocer_mobile/app/pages/auth/sign_up_screen.dart';
-import 'package:greengrocer_mobile/app/pages/base/base_screen.dart';
+import 'package:get/get.dart';
 import 'package:greengrocer_mobile/app/components/widgets/custom_elevated_button.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/size_screen_extension.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/theme_extension.dart';
-
+import 'package:greengrocer_mobile/app/pages_routes/app_pages.dart';
 import '../../components/widgets/custom_text_field.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -86,9 +85,10 @@ class SignInScreen extends StatelessWidget {
                       icon: Icons.lock_outline,
                       isSecret: true,
                     ),
-                    CustomElevatedButton( text: 'Entrar', onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) =>  const BaseScreen()));
-                    }),
+                    CustomElevatedButton(
+                      text: 'Entrar',
+                      onPressed: () => Get.toNamed(PagesRoutes.baseRoute),
+                    ),
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
@@ -136,11 +136,7 @@ class SignInScreen extends StatelessWidget {
                             borderRadius: BorderRadiusDirectional.circular(18),
                           ),
                         ),
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (_) =>  SignUpScreen())
-                          );
-                        },
+                        onPressed: () => Get.offNamed(PagesRoutes.signUpRoute),
                         child: const Text(
                           'Cadastrar',
                           style: TextStyle(fontSize: 18, color: Colors.black),
