@@ -3,7 +3,7 @@ import 'package:greengrocer_mobile/app/components/widgets/custom_text_field.dart
 import 'package:greengrocer_mobile/app/core/ui/extension/theme_extension.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-import '../../components/widgets/custom_elevated_button.dart';
+import '../../../components/widgets/custom_elevated_button.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});

@@ -6,7 +6,7 @@ import 'package:greengrocer_mobile/app/core/ui/extension/size_screen_extension.d
 import 'package:greengrocer_mobile/app/core/ui/extension/theme_extension.dart';
 import 'package:greengrocer_mobile/app/pages/auth/controller/auth_controller.dart';
 import 'package:greengrocer_mobile/app/pages_routes/app_pages.dart';
-import '../../components/widgets/custom_text_field.dart';
+import '../../../components/widgets/custom_text_field.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
@@ -128,8 +128,8 @@ class SignInScreen extends StatelessWidget {
                                           final senha = passwordController.text;
                                           _formKey.currentState!.validate();
                                           authController.singIn(
-                                              email: email, senha: senha);
-                                          Get.toNamed(PagesRoutes.baseRoute);
+                                              email: email, password: senha);
+                                          //Get.toNamed(PagesRoutes.baseRoute);
                                         });
                         },
                       ),
