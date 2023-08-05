@@ -11,6 +11,8 @@ class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
 
   final _formKey = GlobalKey<FormState>(); 
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +86,7 @@ class SignInScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       CustomTextField(
+                        controller: emailController,
                         hintText: 'Usuario',
                         icon: Icons.person_outline,
                         validator: (email) {
@@ -93,6 +96,7 @@ class SignInScreen extends StatelessWidget {
                         },
                       ),
                       CustomTextField(
+                        controller: passwordController,
                         hintText: 'Senha',
                         icon: Icons.lock_outline,
                         isSecret: true,
