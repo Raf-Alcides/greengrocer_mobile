@@ -4,7 +4,10 @@ import 'package:get/get.dart';
 import 'package:greengrocer_mobile/app/core/ui/ui_config.dart';
 import 'package:greengrocer_mobile/app/pages_routes/app_pages.dart';
 
+import 'app/pages/auth/controller/auth_controller.dart';
+
 void main() {
+  Get.put(AuthController());
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {

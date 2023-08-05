@@ -4,20 +4,20 @@ import 'package:get/get.dart';
 import 'package:greengrocer_mobile/app/components/widgets/custom_elevated_button.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/size_screen_extension.dart';
 import 'package:greengrocer_mobile/app/core/ui/extension/theme_extension.dart';
+import 'package:greengrocer_mobile/app/pages/auth/controller/auth_controller.dart';
 import 'package:greengrocer_mobile/app/pages_routes/app_pages.dart';
 import '../../components/widgets/custom_text_field.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
 
-  final _formKey = GlobalKey<FormState>(); 
+  final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    
 
     return Scaffold(
       backgroundColor: context.primaryColor,
@@ -90,8 +90,12 @@ class SignInScreen extends StatelessWidget {
                         hintText: 'Usuario',
                         icon: Icons.person_outline,
                         validator: (email) {
-                          if(email == null || email.isEmpty) return 'Por favor Digite seu E-mail';
-                          if(!email.isEmail) return 'Por favor Digite um E-mail Valido';
+                          if (email == null || email.isEmpty) {
+                            return 'Por favor Digite seu E-mail';
+                          }
+                          if (!email.isEmail) {
+                            return 'Por favor Digite um E-mail Valido';
+                          }
                           return null;
                         },
                       ),
@@ -101,18 +105,33 @@ class SignInScreen extends StatelessWidget {
                         icon: Icons.lock_outline,
                         isSecret: true,
                         validator: (password) {
-                          if(password == null || password.isEmpty) return 'Por favor Digite sua Senha';
-                          if(password.length < 8) return 'Sua senha deve Ter no minino 8 Caracteres';
+                          if (password == null || password.isEmpty) {
+                            return 'Por favor Digite sua Senha';
+                          }
+                          if (password.length < 8) {
+                            return 'Sua senha deve Ter no minino 8 Caracteres';
+                          }
                           return null;
                         },
                       ),
-                      CustomElevatedButton(
-                        text: 'Entrar',
-                        onPressed: () {
-                          _formKey.currentState!.validate();
-                          Get.toNamed(PagesRoutes.baseRoute);
-
-                        } 
+                      GetX<AuthController>(
+                        builder: (authController) {
+                          return authController.isLoading.value
+                              ? const CircularProgressIndicator()
+                              : CustomElevatedButton(
+                                  text: 'Entrar',
+                                  onPressed: authController.isLoading.value
+                                      ? null
+                                      : () {
+                                          FocusScope.of(context).unfocus();
+                                          final email = emailController.text;
+                                          final senha = passwordController.text;
+                                          _formKey.currentState!.validate();
+                                          authController.singIn(
+                                              email: email, senha: senha);
+                                          Get.toNamed(PagesRoutes.baseRoute);
+                                        });
+                        },
                       ),
                       Align(
                         alignment: Alignment.centerRight,
@@ -136,8 +155,8 @@ class SignInScreen extends StatelessWidget {
                             ),
                           ),
                           const Padding(
-                            padding:
-                                EdgeInsets.only(bottom: 18, left: 15, right: 15),
+                            padding: EdgeInsets.only(
+                                bottom: 18, left: 15, right: 15),
                             child: Text(
                               'Ou',
                               style: TextStyle(fontSize: 16),
@@ -155,13 +174,15 @@ class SignInScreen extends StatelessWidget {
                         height: 50.h,
                         child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
-                            side:
-                                BorderSide(width: 2, color: context.primaryColor),
+                            side: BorderSide(
+                                width: 2, color: context.primaryColor),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadiusDirectional.circular(18),
+                              borderRadius:
+                                  BorderRadiusDirectional.circular(18),
                             ),
                           ),
-                          onPressed: () => Get.offNamed(PagesRoutes.signUpRoute),
+                          onPressed: () =>
+                              Get.offNamed(PagesRoutes.signUpRoute),
                           child: const Text(
                             'Cadastrar',
                             style: TextStyle(fontSize: 18, color: Colors.black),
