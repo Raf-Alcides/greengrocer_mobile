@@ -8,11 +8,14 @@ import 'package:greengrocer_mobile/app/pages_routes/app_pages.dart';
 import '../../components/widgets/custom_text_field.dart';
 
 class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+  SignInScreen({super.key});
+
+  final _formKey = GlobalKey<FormState>(); 
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    
 
     return Scaffold(
       backgroundColor: context.primaryColor,
@@ -75,75 +78,94 @@ class SignInScreen extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(45)),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const CustomTextField(
-                        hintText: 'Usuario', icon: Icons.person_outline),
-                    const CustomTextField(
-                      hintText: 'Senha',
-                      icon: Icons.lock_outline,
-                      isSecret: true,
-                    ),
-                    CustomElevatedButton(
-                      text: 'Entrar',
-                      onPressed: () => Get.toNamed(PagesRoutes.baseRoute),
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Esqueceu a senha?',
-                          style: TextStyle(
-                            color: Colors.red[700],
-                            fontSize: 18,
-                          ),
-                        ),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      CustomTextField(
+                        hintText: 'Usuario',
+                        icon: Icons.person_outline,
+                        validator: (email) {
+                          if(email == null || email.isEmpty) return 'Por favor Digite seu E-mail';
+                          if(!email.isEmail) return 'Por favor Digite um E-mail Valido';
+                          return null;
+                        },
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Divider(
-                            thickness: 2,
-                            color: Colors.grey.withAlpha(90),
-                          ),
-                        ),
-                        const Padding(
-                          padding:
-                              EdgeInsets.only(bottom: 18, left: 15, right: 15),
+                      CustomTextField(
+                        hintText: 'Senha',
+                        icon: Icons.lock_outline,
+                        isSecret: true,
+                        validator: (password) {
+                          if(password == null || password.isEmpty) return 'Por favor Digite sua Senha';
+                          if(password.length < 8) return 'Sua senha deve Ter no minino 8 Caracteres';
+                          return null;
+                        },
+                      ),
+                      CustomElevatedButton(
+                        text: 'Entrar',
+                        onPressed: () {
+                          _formKey.currentState!.validate();
+                          Get.toNamed(PagesRoutes.baseRoute);
+
+                        } 
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                          onPressed: () {},
                           child: Text(
-                            'Ou',
-                            style: TextStyle(fontSize: 16),
+                            'Esqueceu a senha?',
+                            style: TextStyle(
+                              color: Colors.red[700],
+                              fontSize: 18,
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          child: Divider(
-                            thickness: 2,
-                            color: Colors.grey.withAlpha(90),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 50.h,
-                      child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          side:
-                              BorderSide(width: 2, color: context.primaryColor),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadiusDirectional.circular(18),
-                          ),
-                        ),
-                        onPressed: () => Get.offNamed(PagesRoutes.signUpRoute),
-                        child: const Text(
-                          'Cadastrar',
-                          style: TextStyle(fontSize: 18, color: Colors.black),
                         ),
                       ),
-                    ),
-                  ],
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Divider(
+                              thickness: 2,
+                              color: Colors.grey.withAlpha(90),
+                            ),
+                          ),
+                          const Padding(
+                            padding:
+                                EdgeInsets.only(bottom: 18, left: 15, right: 15),
+                            child: Text(
+                              'Ou',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ),
+                          Expanded(
+                            child: Divider(
+                              thickness: 2,
+                              color: Colors.grey.withAlpha(90),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 50.h,
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            side:
+                                BorderSide(width: 2, color: context.primaryColor),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadiusDirectional.circular(18),
+                            ),
+                          ),
+                          onPressed: () => Get.offNamed(PagesRoutes.signUpRoute),
+                          child: const Text(
+                            'Cadastrar',
+                            style: TextStyle(fontSize: 18, color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
