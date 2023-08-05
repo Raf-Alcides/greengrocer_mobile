@@ -6,8 +6,10 @@ import 'package:greengrocer_mobile/app/pages/base/home/product/product_screen.da
 
 class CardTile extends StatelessWidget {
   final ItemModel item;
+  final void Function(GlobalKey) cartAnimationMethod;
+  final GlobalKey imagesGk = GlobalKey(); 
 
-  CardTile({super.key, required this.item});
+  CardTile({super.key, required this.item, required this.cartAnimationMethod});
 
   final UtilsServices utilsServices = UtilsServices();
 
@@ -35,7 +37,9 @@ class CardTile extends StatelessWidget {
                 children: [
                   Expanded(child: Hero(
                     tag: item.imgUrl,
-                    child: Image.asset(item.imgUrl))),
+                    child: Container(
+                      key: imagesGk,
+                      child: Image.asset(item.imgUrl,)))),
                   Text(
                     item.itemName,
                     style: const TextStyle(
@@ -69,7 +73,9 @@ class CardTile extends StatelessWidget {
             top: 5,
             right: 5,
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                cartAnimationMethod(imagesGk);
+              },
               child: Container(
                 height: 40,
                 width: 40,

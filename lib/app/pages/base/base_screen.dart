@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer_mobile/app/pages/base/cart/cart_tab.dart';
-
 import 'home/home_tab.dart';
 import 'orders/orders_tab.dart';
 import 'profile/profile_tab.dart';
@@ -34,7 +33,7 @@ class _BaseScreenState extends State<BaseScreen> {
           onTap: (value) {
             setState(() {
               currentIndex = value;
-              pageController.jumpToPage(value);
+              pageController.animateToPage(value, duration: const Duration(microseconds: 1000), curve: Curves.bounceInOut,);
             });
           },
           items: const [
