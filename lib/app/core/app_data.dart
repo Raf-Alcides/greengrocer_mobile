@@ -80,7 +80,7 @@ UserModel user = UserModel(
   nome: 'Rafael',
   email: 'Rafael@email.com',
   telefone: '71 9 8101-0276',
-  senha: '',
+  password: '',
   cpf: '076.708.835-29',
 );
 
